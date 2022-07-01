@@ -215,7 +215,7 @@ contract LufiBridge is Ownable {
     event StartedTransferCrossChain(address, uint256);
     event BurntBridgeToken(uint256);
     event MintedBridgeToken(uint256);
-    event TransferredCrossedToken(address, uint256);
+    event FinalizedTransferCrossChain(address, uint256);
     event RescueWithdrewETH(address, uint256);
     event RescueWithdrewToken(address, uint256);
 
@@ -223,7 +223,7 @@ contract LufiBridge is Ownable {
         _token = ILufiERC20(token_);
     }
 
-    function transferCrossChain(uint256 amount) public payable {
+    function startTransferCrossChain(uint256 amount) public payable {
         require(
             amount > minTokenToCross,
             "Token amount should be greater than minimum amount"
@@ -254,12 +254,12 @@ contract LufiBridge is Ownable {
         emit MintedBridgeToken(amount);
     }
 
-    function transferCrossedToken(address to, uint256 amount) public onlyOwner {
+    function finalizeTransferCrossChain(address to, uint256 amount) public onlyOwner {
         require(amount > 0, "Amount should not be zero");
 
         _token.transfer(to, amount);
 
-        emit TransferredCrossedToken(to, amount);
+        emit FinalizedTransferCrossChain(to, amount);
     }
 
     function rescueWithdrawETH(uint256 amount) public onlyOwner {
