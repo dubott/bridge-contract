@@ -1,0 +1,22 @@
+a) User1 make a transaction
+- approve token
+- transfer token to BSC-Bridge
+- transfer bnb to B-Bridge
+
+b) B-B emit an event to backend
+
+c) backend make a transaction of d) and e) with admin wallet (private key is stored on backend)
+
+d) B-B call token contract to burn token
+
+e) B-B emit an event to backend
+
+f) backend make a txn of g) and h) with admin wallet
+
+g) M-B call token contract to mint token
+
+h) M-B emit an event to backend
+
+i) backend make a txn of j) with admin wallet
+
+j) token is transferred from M-B to user2
