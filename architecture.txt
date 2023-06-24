@@ -1,3 +1,7 @@
+BSC and Mumbai
+
+Refer to architecture.png
+
 a) User1 make a transaction
 - approve token
 - transfer token to BSC-Bridge
